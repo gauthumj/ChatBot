@@ -12,6 +12,24 @@
             "context": [""]
         },
         {
+            "tag": "status",
+            "patterns": ["What is the status of bus?", "What's the approximate delay in bus's arrival?", "Is there a delay due to unfortunate weather?", "What's the estimated arrival time of the bus?","What's the estimated departure time of the bus?"],
+            "responses": ["the bus is en route", "The bus will be arriving in ..."],
+            "context": ""
+        },
+        {
+             "tag": "reroute",
+             "patterns": ["What's the status of my reroute request?", "Do you want a group drop?", "What's the headcount of my peers?"],
+             "responses": ["So sorry, but your request has been denied for rerouting your drop to a different locale. It will be enabled in the future versions of the app"],
+             "context": ""
+        },
+        {
+             "tag": "request",
+             "patterns": ["If your request is regarding rerouting your drop location, please try the keyword 'reroute'", "Please provide with the "],
+             "responses": ["We are open 7am-4pm Monday-Friday!"],
+             "context": ""
+        },
+        {
             "tag": "thanks",
             "patterns": ["Thanks", "okay","Thank you","thankyou", "That's helpful", "Awesome, thanks", "Thanks for helping me", "wow", "great"],
             "responses": ["Happy to help!", "Any time!","you're welcome", "My pleasure"],

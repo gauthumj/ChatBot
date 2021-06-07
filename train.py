@@ -95,15 +95,7 @@ model.summary()
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss="categorical_crossentropy", optimizer=sgd, metrics=["accuracy"])
 
-# for choosing an optimal number of training epochs to avoid underfitting or overfitting use an early stopping callback to keras
-# based on either accuracy or loos monitoring. If the loss is being monitored, training comes to halt when there is an 
-# increment observed in loss values. Or, If accuracy is being monitored, training comes to halt when there is decrement observed in accuracy values.
 
-# from keras import callbacks 
-# earlystopping = callbacks.EarlyStopping(monitor ="loss", mode ="min", patience = 5, restore_best_weights = True)
-# callbacks =[earlystopping]
-
-# fitting and saving the model
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
 model.save("chatbot_model.h5", hist)
 print("model created")

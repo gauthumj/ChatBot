@@ -20,6 +20,7 @@ classes = pickle.load(open("classes.pkl", "rb"))
 app = Flask(__name__)
 run_with_ngrok(app) 
 
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -28,16 +29,21 @@ def home():
 @app.route("/get", methods=["POST"])
 def chatbot_response():
     msg = request.form["msg"]
-    if msg.startswith('my name is'):
+    if msg.lower().startswith('my name is'):
         name = msg[11:]
         ints = predict_class(msg, model)
         res1 = getResponse(ints, intents)
-        res =res1.replace("{n}",name)
-    elif msg.startswith('hi my name is'):
+        res = res1.replace("{n}", name)
+    elif msg.lower().startswith('hi my name is'):
         name = msg[14:]
         ints = predict_class(msg, model)
         res1 = getResponse(ints, intents)
-        res =res1.replace("{n}",name)
+        res = res1.replace("{n}", name)
+    elif msg.lower().startswith('i\'m'):
+        name = msg[4:]
+        ints = predict_class(msg, model)
+        res1 = getResponse(ints, intents)
+        res = res1.replace("{n}", name)
     else:
         ints = predict_class(msg, model)
         res = getResponse(ints, intents)
